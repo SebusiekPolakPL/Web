@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zgadnij Liczbę!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>Zgadnij Liczbę, którą mam w głowie!</h1>
+    <p class="hint">Mam liczbę w przedziale od 1 do 100. Zgadnij ją!</p>
+
+    <div class="row">
+      <input id="guess-input" type="number" min="1" max="100" placeholder="Zgaduj tutaj!" />
+      <button id="guess-btn" type="button">Zgaduje!</button>
+      <button id="new-btn" type="button" class="secondary">Nowa Gra</button>
+    </div>
+
+    <p id="message"></p>
+    <p id="attempts">Próby: 0</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
