@@ -1,4 +1,3 @@
-/* 🌈 Tło z ruchem */
 body {
   font-family: system-ui, Arial, sans-serif;
   background: linear-gradient(120deg, #a1c4fd, #c2e9fb, #fbc2eb, #a6c1ee);
@@ -101,7 +100,6 @@ button.secondary:hover {
   margin-top: 6px;
 }
 
-/* ✨ Pulsowanie przy wygranej */
 .win {
   animation: pulseWin 1s ease infinite alternate;
 }
@@ -111,7 +109,6 @@ button.secondary:hover {
   100% { color: #22c55e; transform: scale(1.1); }
 }
 
-/* 💥 Trzęsienie przy błędzie */
 .shake {
   animation: shakeAnim 0.4s;
 }
@@ -125,3 +122,4 @@ button.secondary:hover {
   75% { transform: translateX(-4px); }
   90% { transform: translateX(4px); }
 }
+
