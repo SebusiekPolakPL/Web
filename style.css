@@ -1,6 +1,9 @@
+/* 🌈 Tło z ruchem */
 body {
   font-family: system-ui, Arial, sans-serif;
-  background: #f4f7fb;
+  background: linear-gradient(120deg, #a1c4fd, #c2e9fb, #fbc2eb, #a6c1ee);
+  background-size: 300% 300%;
+  animation: gradientMove 10s ease infinite;
   margin: 0;
   height: 100vh;
   display: flex;
@@ -9,13 +12,21 @@ body {
   color: #1f2937;
 }
 
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .app {
   width: 320px;
-  background: #ffffff;
+  background: #ffffffcc;
+  backdrop-filter: blur(10px);
   border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   padding: 20px;
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
 h1 {
@@ -42,11 +53,13 @@ input[type="number"] {
   border-radius: 8px;
   font-size: 14px;
   outline: none;
+  transition: all 0.2s ease;
 }
 
 input[type="number"]:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  transform: scale(1.03);
 }
 
 button {
@@ -57,10 +70,12 @@ button {
   padding: 8px 12px;
   font-size: 14px;
   cursor: pointer;
+  transition: transform 0.1s ease, background 0.3s;
 }
 
 button:hover {
   background: #1d4ed8;
+  transform: scale(1.05);
 }
 
 button.secondary {
@@ -70,15 +85,43 @@ button.secondary {
 
 button.secondary:hover {
   background: #d1d5db;
+  transform: scale(1.05);
 }
 
 #message {
   margin-top: 12px;
-  min-height: 20px;
+  min-height: 24px;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.3s;
 }
 
 #attempts {
   color: #6b7280;
   font-size: 13px;
   margin-top: 6px;
+}
+
+/* ✨ Pulsowanie przy wygranej */
+.win {
+  animation: pulseWin 1s ease infinite alternate;
+}
+
+@keyframes pulseWin {
+  0% { color: #16a34a; transform: scale(1); }
+  100% { color: #22c55e; transform: scale(1.1); }
+}
+
+/* 💥 Trzęsienie przy błędzie */
+.shake {
+  animation: shakeAnim 0.4s;
+}
+
+@keyframes shakeAnim {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-8px); }
+  30% { transform: translateX(8px); }
+  45% { transform: translateX(-6px); }
+  60% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+  90% { transform: translateX(4px); }
 }

@@ -4,7 +4,9 @@ let tries = 0;
 function newGame() {
   secret = Math.floor(Math.random() * 100) + 1;
   tries = 0;
-  document.getElementById('message').textContent = '';
+  const msg = document.getElementById('message');
+  msg.textContent = '';
+  msg.className = '';
   document.getElementById('attempts').textContent = 'Próby: 0';
   const input = document.getElementById('guess-input');
   input.value = '';
@@ -15,21 +17,33 @@ function newGame() {
 
 function makeGuess() {
   const input = document.getElementById('guess-input');
+  const msg = document.getElementById('message');
   const value = Number(input.value);
 
+  // usuń klasę .shake i wymuś ponowne uruchomienie animacji
+  msg.classList.remove('shake');
+  void msg.offsetWidth; // reset animacji CSS
+
   if (!Number.isInteger(value) || value < 1 || value > 100) {
-    document.getElementById('message').textContent = 'Proszę wpisać liczbę od 1 do 100!';
+    msg.textContent = 'Proszę wpisać liczbę od 1 do 100!';
+    msg.style.color = '#dc2626';
+    msg.classList.add('shake');
     input.focus();
     return;
   }
 
   tries++;
   if (value < secret) {
-    document.getElementById('message').textContent = 'Za mała! Spróbuj większej!';
+    msg.textContent = 'Za mała! Spróbuj większej!';
+    msg.style.color = '#dc2626';
+    msg.classList.add('shake');
   } else if (value > secret) {
-    document.getElementById('message').textContent = 'Za duża! Spróbuj mniejszej!';
+    msg.textContent = 'Za duża! Spróbuj mniejszej!';
+    msg.style.color = '#dc2626';
+    msg.classList.add('shake');
   } else {
-    document.getElementById('message').textContent = `Masz to! Nasza sekretna liczba to: ${secret}.`;
+    msg.textContent = `🎉 Masz to! Nasza sekretna liczba to: ${secret}.`;
+    msg.className = 'win';
     document.getElementById('guess-btn').disabled = true;
     input.disabled = true;
   }
